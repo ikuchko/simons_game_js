@@ -2,21 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
-    <title>Ping Pong</title>
+    <title>Simon</title>
   </head>
   <body>
-    <form id="ping-pong">
-      <label for="goal">Enter a number:</label>
-      <input id="goal" type="number">
-      <button type="submit">Submit</button>
-    </form>
-    <form id="signup">
-      <label for="email">Enter your email:</label>
-      <input id="email" type="text">
-      <button type="submit">Submit</button>
-    </form>
-    <ul id="solution"></ul>
+    <h1>Simon</h1>
+
+
+    <div id="board">
+      <div id="game-time">
+        <div id="black-round-part">
+          <div id="start">
+            <p>Start</p>
+          </div>
+          <div id="color-buttons">
+            <div id="red" class="pressable"></div>
+            <div id="blue" class="pressable"></div>
+            <div id="yellow" class="pressable"></div>
+            <div id="green" class="pressable"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
