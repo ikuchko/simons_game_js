@@ -15,14 +15,18 @@ exports.Simon = Simon;
 },{}],2:[function(require,module,exports){
 var Simon = require('./../js/simon.js').Simon;
 
+var simonFunction = function(color) {
+  $("#" + color).css("background-color", "rgba(0, 0, 0, 0)");
+  setTimeout(function(){ $("#" + color).css("background-color", color); }, 1000);
+}
 
 $(function() {
   var simon = new Simon();
   // each time the sequence gets longer, it becomes slightly faster
-  simon.addColor();
   $("#start").click(function() {
+      simon.addColor();
       $("#" + simon.simonSays[0]).css("background-color", "rgba(0, 0, 0, 0)");
-      setInterval(function(){ $("#" + simon.simonSays[0]).css("background-color", simon.simonSays[0]); }, 1000);
+      setTimeout(function(){ $("#" + simon.simonSays[0]).css("background-color", simon.simonSays[0]); }, 300);
       $("#start").unbind("click");
   });
 
@@ -30,23 +34,19 @@ $(function() {
     var isGameOver = true;
     for (var i in simon.canSay) {
       $("#" + simon.canSay[i]).click(function(event) {
-        // debugger;
         if (simon.simonSays[userGuess] === event.target.id) {
           if (simon.simonSays.length - 1 === userGuess) {
             simon.addColor();
             for (var i in simon.simonSays) {
-              setInterval(function(){
-                $("#" + simon.simonSays[i]).css("background-color", "rgba(0, 0, 0, 0)");
-                setInterval(function(){ $("#" + simon.simonSays[i]).css("background-color", simon.simonSays[i]); }, 1000);
-              }, 1000);
-
+              // debugger;
+              setTimeout(function(){simonFunction(simon.simonSays[i]); }, 500 * (i));
               userGuess = 0;
             }
           } else {
             userGuess += 1;
           }
         } else {
-          $("#start").css("background-color", "purple");
+          console.log("I didn't say 'Simon Says!!'")
         }
       });
     }
@@ -82,9 +82,6 @@ $(function() {
 //
 // } while (!isGameOver);
 
-  $("#" + simon.simonSays[i]).click(function() {
-
-  });
 
 });
 
